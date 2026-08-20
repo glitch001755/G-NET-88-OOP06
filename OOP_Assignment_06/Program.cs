@@ -1,4 +1,6 @@
-﻿namespace OOP_Assignment_06
+﻿using OOP_Assignment_06.Resources;
+
+namespace OOP_Assignment_06
 {
     internal class Program
     {
@@ -73,6 +75,139 @@
             // d) What happens if a declared partial method has no implementation? 
             // Answer => The compiler completely removes the method declaration and calls at compile time .
 
+            #endregion
+            #endregion
+            #region Part 02
+            DeliveryUtilities.PrintSeparator();
+            DeliveryUtilities.PrintSystemTitle("Smart Delivery Management System");
+            DeliveryUtilities.PrintSeparator();
+            #region center name
+            DeliveryCenter Center01 = new DeliveryCenter("Cairo Center");
+            #endregion
+            #region StandardShipment
+            string code1 = "SH001";
+            string desc1 = "Mobile";
+            double weight1 = 20;
+            decimal fee1 = 50;
+            string city1 = "Zagazigggggg";
+            string street1 = "Altahrirrrrrrrr";
+            int buildingNumber1 = 20;
+            DeliveryAddress standard01add = new(city1!, street1!, buildingNumber1);
+            StandardShipment s01 = new(code1!, desc1!, weight1, fee1, standard01add);
+            #endregion
+            #region ExpressShipment
+            string code2 = "SH002";
+            string desc2 = "PC";
+            double weight2 = 15;
+            decimal fee2 = 50;
+            decimal extrafee2 = 50;
+            string city2 = "Zagazig";
+            string street2 = "Altahrir";
+            int buildingNumber2 = 11;
+            DeliveryAddress standard02add = new(city2!, street2!, buildingNumber2);
+            ExpressShipment s02 = new(code2!, desc2!, weight2, fee2, extrafee2, standard02add);
+            #endregion
+            #region InternationalShipment
+            string distination3 = "Egypt";
+            string code3 = "SH003";
+            string desc3 = "Laptop";
+            double weight3 = 15;
+            decimal fee3 = 50;
+            decimal customfee3 = 50;
+            string city3 = "Zag";
+            string street3 = "Altahrir";
+            int buildingNumber3 = 15;
+            DeliveryAddress standard03add = new(city3!, street3!, buildingNumber3);
+            InternationalShipment s03 = new(distination3!, code3!, desc3!, weight3, fee3, customfee3, standard03add);
+            #endregion
+            DeliveryUtilities.PrintSeparator();
+            DeliveryUtilities.PrintSystemTitle("Creating Shipments...");
+            DeliveryUtilities.PrintSeparator();
+            #region Add all shipments to the DeliveryCenter
+            Center01.AddShipment(s01);
+            Center01.AddShipment(s02);
+            Center01.AddShipment(s03);
+            Console.WriteLine($"\nTotal Shipments Created : {Shipment.GetTotalShipmentsCreated()}\n");
+            DeliveryUtilities.PrintSeparator();
+            #endregion
+            #region Object Copying
+            Shipment standard01 = s01;
+            DeliveryUtilities.PrintSeparator();
+            DeliveryUtilities.PrintSystemTitle("Object Copying");
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine($"\nOriginal Shipment  :{s01.TrackingCode}");
+            Console.WriteLine($"Assigned Shipment  :{standard01.TrackingCode}\n");
+            Console.WriteLine($"Same Object : {object.ReferenceEquals(standard01, s01)}\n");
+            #endregion
+            #region Shallow Copy
+            Shipment standard02 = s01.ShallowCopy();
+            DeliveryUtilities.PrintSingleSeparator();
+            DeliveryUtilities.PrintSystemTitle("Shallow Copy");
+            DeliveryUtilities.PrintSingleSeparator();
+            Console.WriteLine($"Original Shipment Address : {s01.Destination.city}");
+            Console.WriteLine($"Copied Shipment Address : {standard02.Destination.city}");
+            Console.WriteLine("\nChanging copied shipment address...\n");
+            standard02.Destination.city = "zag";
+            Console.WriteLine($"Original Shipment Address : {s01.Destination.city}");
+            Console.WriteLine($"Copied Shipment Address : {standard02.Destination.city}");
+            Console.WriteLine($"\nSame DeliveryAddress Object : {object.ReferenceEquals(s01.Destination.city, standard02.Destination.city)}\n");
+            #endregion
+            #region Deep Copy
+            Shipment standard03 = s01.DeepCopy();
+            DeliveryUtilities.PrintSingleSeparator();
+            DeliveryUtilities.PrintSystemTitle("Deep Copy");
+            DeliveryUtilities.PrintSingleSeparator();
+            Console.WriteLine($"\nOriginal Shipment Address : {s01.Destination.city}");
+            Console.WriteLine($"Copied Shipment Address : {standard03.Destination.city}");
+            Console.WriteLine("\nChanging copied shipment address...\n");
+            standard03.Destination.city = "Cairo";
+            Console.WriteLine($"Original Shipment Address : {s01.Destination.city}");
+            Console.WriteLine($"Copied Shipment Address : {standard03.Destination.city}");
+            Console.WriteLine($"\nSame DeliveryAddress Object : {object.ReferenceEquals(s01.Destination.city, standard03.Destination.city)}\n");
+            #endregion
+            #region Extension Methods
+            DeliveryUtilities.PrintSeparator();
+            DeliveryUtilities.PrintSystemTitle("Extension Methods");
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine();
+            Console.WriteLine(s01.GetSummary());
+            Console.WriteLine(s02.GetSummary());
+            Console.WriteLine(s03.GetSummary());
+            Console.WriteLine($"\nSH001 Is Delivered : {s01.IsDelivered()}");
+            Console.WriteLine($"SH003 Is Delivered : {s03.IsDelivered()}\n");
+            #endregion
+            #region Tracking Status
+            DeliveryUtilities.PrintSeparator();
+            DeliveryUtilities.PrintSystemTitle("Tracking Status");
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine();
+            s03.UpdateTrackingStatus("Out For Delivery");
+            Console.WriteLine();
+            #endregion
+            #region Static Utilities
+            DeliveryUtilities.PrintSeparator();
+            DeliveryUtilities.PrintSystemTitle("Static Utilities");
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine();
+            DeliveryUtilities.PrintSingleSeparator();
+            DeliveryUtilities.PrintSystemTitle("Delivery Center");
+            DeliveryUtilities.PrintSingleSeparator();
+
+            Console.WriteLine($"\nTotal Shipments Created : {Shipment.TotalShipmentsCreated}\n");
+
+            #endregion
+            #region Partial Method
+            DeliveryUtilities.PrintSeparator();
+            DeliveryUtilities.PrintSystemTitle("Partial Method");
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine();
+            s02.UpdateTrackingStatus("Delivered");
+            Console.WriteLine();
+            #endregion
+            #region Assignment Completed
+            DeliveryUtilities.PrintSeparator();
+            DeliveryUtilities.PrintSystemTitle("Assignment Completed");
+            DeliveryUtilities.PrintSeparator();
             #endregion
             #endregion
         }
