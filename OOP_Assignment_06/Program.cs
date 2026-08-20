@@ -60,6 +60,20 @@
             // Answer => No it can't .
 
             #endregion
+            #region Q5  Partial Classes and Partial Methods 
+            // a) What is a Partial Class? 
+            // Answer => class whose definition is split across two or more files .
+
+            // b) Why would a developer split one class into multiple files? 
+            // Answer => to allow multiple developers to work on the same class , or keep auto-generated code separate from custom code .
+
+            // c) What is a Partial Method? 
+            // Answer => method declared in one partial part with its implementation optionally defined in another part .
+
+            // d) What happens if a declared partial method has no implementation? 
+            // Answer => The compiler completely removes the method declaration and calls at compile time .
+
+            #endregion
             #endregion
         }
     }
