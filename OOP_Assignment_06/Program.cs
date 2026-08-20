@@ -32,6 +32,20 @@
             // Answer => When modifying nested data ande this data are refrence type .
 
             #endregion
+            #region Q3  Static Members 
+            // a) What is a static field, and how is it different from an instance field? 
+            // Answer => field belong to the class not the object and shared across all instances (class member) , but instance field belongs to a specific object  .
+
+            // b) What is a static method? Can a static method directly access instance members? 
+            // Answer => Helper Method call it by name of class not from object .
+
+            // c) What is a static constructor, and when is it executed? 
+            // Answer => constructor that initializes static data ,called automatically before the class is first used or an instance is created .
+
+            // d) What is a static class? Can you create an object from a static class? 
+            // Answer => class group related static members ande cant create object from it .
+
+            #endregion
             #endregion
         }
     }
