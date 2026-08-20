@@ -46,6 +46,20 @@
             // Answer => class group related static members ande cant create object from it .
 
             #endregion
+            #region Q4  Extension Methods 
+            // a) What is an Extension Method? 
+            // Answer => static method that can be called with instance method syntax on an existing type without modifying its source code .
+
+            // b) What keyword must be used in the first parameter of an extension method? 
+            // Answer => this keyword
+
+            // c) Where must an extension method be declared? 
+            // Answer => inside static class.
+
+            // d) Can an extension method access private members of the class it extends? 
+            // Answer => No it can't .
+
+            #endregion
             #endregion
         }
     }
